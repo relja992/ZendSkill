@@ -46,6 +46,10 @@
             </div>
         </nav>
         <div class="container">
+            <?= $this->navigation('navigation')
+            ->breadcrumbs()
+            ->setMinDepth(0)
+            ->setPartial('partial/breadcrumb') ?>
             <?= $this->content ?>
             <hr>
             <footer>
