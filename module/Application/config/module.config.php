@@ -10,9 +10,39 @@ namespace Application;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
-use Album\Controller\AlbumController;
 
 return [
+
+    'navigation' => [
+        'default' => [
+            [
+                'label' => 'Naslovna',
+                'route' => 'home',
+            ],
+            [
+                'label' => 'Albumi',
+                'route' => 'album',
+                'pages' => [
+                    [
+                        'label'  => 'Dodaj',
+                        'route'  => 'album',
+                        'action' => 'add',
+                    ],
+                    [
+                        'label'  => 'Izmeni',
+                        'route'  => 'album',
+                        'action' => 'edit',
+                    ],
+                    [
+                        'label'  => 'Obriši',
+                        'route'  => 'album',
+                        'action' => 'delete',
+                    ],
+                ],
+            ],
+        ],
+    ],
+
     'router' => [
         'routes' => [
             'home' => [
@@ -20,7 +50,7 @@ return [
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
-                        'controller' => AlbumController::class,
+                        'controller' => Controller\IndexController::class,
                         'action'     => 'index',
                     ],
                 ],
